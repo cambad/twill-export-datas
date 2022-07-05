@@ -1,0 +1,67 @@
+---
+version: "3.9"
+
+services:
+  app:
+    image: ghcr.io/luislavena/hydrofoil-php:8.0
+    working_dir: /app
+    command: overmind start -f Procfile.dev
+
+    # Set these env variables using `export FIXUID=$(id -u) FIXGID=$(id -g)`
+    user: ${FIXUID:-1000}:${FIXGID:-1000}
+
+    depends_on:
+      - mailhog
+      - pgsql
+      - redis
+
+    ports:
+      - "${APP_PORT:-80}:80"
+    volumes:
+      - .:/app:cached
+
+  mailhog:
+    image: mailhog/mailhog:latest
+    ports:
+      - '${FORWARD_MAILHOG_PORT:-1025}:1025'
+      - '${FORWARD_MAILHOG_DASHBOARD_PORT:-8025}:8025'
+
+  pgsql:
+    image: bitnami/postgresql:13
+    environment:
+      - POSTGRESQL_DATABASE=${DB_DATABASE:-laravel}
+      - POSTGRESQL_USERNAME=${DB_USERNAME:-user}
+      - POSTGRESQL_PASSWORD=${DB_PASSWORD:-secret}
+
+    healthcheck:
+      test: ["CMD", "pg_isready", "-q", "-d", "${DB_DATABASE}", "-U", "${DB_USERNAME}"]
+      retries: 3
+      timeout: 5s
+      start_period: 5s
+
+    ports:
+      - "${FORWARD_DB_PORT:-5432}:5432"
+    volumes:
+      - pgsql:/bitnami/postgresql
+
+  redis:
+    image: bitnami/redis:6.2
+    environment:
+      - ALLOW_EMPTY_PASSWORD=yes
+
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      retries: 3
+      timeout: 5s
+      start_period: 5s
+
+    ports:
+      - "${FORWARD_REDIS_PORT:-6379}:6379"
+    volumes:
+      - redis:/bitnami/redis/data
+
+volumes:
+  pgsql:
+    driver: local
+  redis:
+    driver: local
