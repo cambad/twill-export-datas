@@ -27,30 +27,26 @@ piece fits together.
 
 ## Requirements
 
-List any and all requirements, include hardware, server software, and
-third-party libraries.
-
-List also if retrieve of specific configuration is required prior launching
-the project (Eg. obtain a copy of database, obtain specific settings from
-the vault).
+- PgSQL database (PgSQL 11).
+- yarn 
+- php 8.0.2
 
 ## Development
 
-A quick introduction of the minimal setup you need to get the application up
-and running.
-
 ```console
-$ first-command
+# Clone the repository
+$ cd <project-name>
+$ cp .env.example .env
 
-# Describe in brief what each step does
-$ another-command
+# Edit .env file
+# Prepare your database
 
-# Or why this step is required
-$ up-and-running
+$ Composer install
+$ php artisan key:generate
+
+$ php artisan twill:install
+$ php artisan migrate
 ```
-
-Here you should say more thoroughly what actually happens when you execute
-the above instructions.
 
 ### Deployment / Release
 

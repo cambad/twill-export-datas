@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "area17/twill": "^2.8",
+        "area17/twill": "*",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
@@ -23,6 +23,12 @@
         "nunomaduro/larastan": "^2.0",
         "friendsofphp/php-cs-fixer": "^3.0"
     },
+    "repositories": [
+        {
+            "type": "path",
+            "url": "./../a17repos/fork-twill"
+        }
+    ],
     "autoload": {
         "psr-4": {
             "App\\": "app/",
