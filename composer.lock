@@ -4,15 +4,21 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "a3e152ee83a763d70df379965ee5c180",
+    "content-hash": "4acb126791b5c74908da8323975e3782",
     "packages": [
         {
             "name": "area17/twill",
-            "version": "2.x-dev",
+            "version": "dev-twill-export-data",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/cambad/twill.git",
+                "reference": "e1b5232b80b0437275c1d4cfc9600994d0427b00"
+            },
             "dist": {
-                "type": "path",
-                "url": "./../a17repos/fork-twill",
-                "reference": "f9cd9eee5d07543230d65dd0a5f90ec556363db7"
+                "type": "zip",
+                "url": "https://api.github.com/repos/cambad/twill/zipball/e1b5232b80b0437275c1d4cfc9600994d0427b00",
+                "reference": "e1b5232b80b0437275c1d4cfc9600994d0427b00",
+                "shasum": ""
             },
             "require": {
                 "astrotomic/laravel-translatable": "^11.5",
@@ -106,11 +112,10 @@
             "support": {
                 "issues": "https://github.com/area17/twill/issues/",
                 "docs": "https://twill.io/docs",
-                "chat": "https://discord.link/twill"
+                "chat": "https://discord.link/twill",
+                "source": "https://github.com/cambad/twill/tree/twill-export-data"
             },
-            "transport-options": {
-                "relative": true
-            }
+            "time": "2022-07-06T14:31:51+00:00"
         },
         {
             "name": "asm89/stack-cors",
@@ -11867,7 +11872,9 @@
     ],
     "aliases": [],
     "minimum-stability": "dev",
-    "stability-flags": [],
+    "stability-flags": {
+        "area17/twill": 20
+    },
     "prefer-stable": true,
     "prefer-lowest": false,
     "platform": {

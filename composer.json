@@ -6,7 +6,7 @@
     "license": "MIT",
     "require": {
         "php": "^8.0.2",
-        "area17/twill": "*",
+        "area17/twill": "dev-twill-export-data",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.2",
         "laravel/framework": "^9.19",
@@ -25,8 +25,8 @@
     },
     "repositories": [
         {
-            "type": "path",
-            "url": "./../a17repos/fork-twill"
+            "type": "vcs",
+            "url": "https://github.com/cambad/twill"
         }
     ],
     "autoload": {
